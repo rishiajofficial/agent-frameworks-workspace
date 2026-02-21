@@ -1,0 +1,31 @@
+# Tasks for the hierarchical crew. The manager assigns these to Developer, Tester, or Code Reviewer.
+# Variables: target_repo, focus_area, improvement_goals
+
+improvement_task:
+  description: >
+    In the repo {target_repo}, implement improvements in the focus area "{focus_area}".
+    Goals for this run: {improvement_goals}
+    Read relevant files, make code changes (fix bugs, refactor, add tests or features),
+    and run the build if applicable. Report what you did.
+  expected_output: >
+    Summary of changes made: files touched, improvements implemented, and any build/test result.
+  agent: developer
+
+test_suite_task:
+  description: >
+    Run the full test suite for {target_repo}. Execute the appropriate test command
+    (e.g. pytest, npm test) in the repo root, capture stdout/stderr and exit code,
+    and summarize results: pass/fail, failed tests, and any flakiness or errors.
+  expected_output: >
+    Test run summary: command used, exit code, list of failed tests (if any),
+    and recommendations (e.g. "Developer should fix X").
+  agent: tester
+
+review_task:
+  description: >
+    Review the codebase or recent changes in {target_repo}, focusing on {focus_area}.
+    Check for correctness, style, and security. Do not edit files—provide a review
+    with specific suggestions the Developer can apply.
+  expected_output: >
+    Code review: issues found, suggestions, and approval or requested changes.
+  agent: code_reviewer
