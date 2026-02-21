@@ -17,6 +17,17 @@ A workspace for testing and comparing multi-agent AI frameworks. Each framework 
 2. Install [uv](https://docs.astral.sh/uv/) if you haven’t: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 3. For CrewAI, install the CLI: `uv tool install crewai`
 
+## Deploy (Render)
+
+The CrewAI crew can be deployed as a web service on [Render](https://render.com):
+
+1. Go to [dashboard.render.com](https://dashboard.render.com) → **New** → **Blueprint**.
+2. Connect the repository `rishiajofficial/agent-frameworks-workspace` (or your fork).
+3. Add `OPENAI_API_KEY` in the service’s **Environment** (Render will prompt if set to sync).
+4. Click **Deploy Blueprint**.
+
+You get a URL; `GET /` is health, `POST /run` runs the crew (optional JSON: `target_repo`, `focus_area`, `improvement_goals`). Note: long crew runs may hit Render’s request timeout; for heavy use consider a background worker or cron.
+
 ## Docs
 
 - [CrewAI](https://docs.crewai.com/)

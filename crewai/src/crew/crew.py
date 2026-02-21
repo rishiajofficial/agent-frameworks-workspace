@@ -73,4 +73,5 @@ class ContinuousImprovementCrew:
             process=Process.hierarchical,
             manager_llm="gpt-4o",
             verbose=True,
+            planning=True,
         )
